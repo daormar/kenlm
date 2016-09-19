@@ -1,5 +1,5 @@
-#ifndef LM_STATE_H
-#define LM_STATE_H
+#ifndef _LM_STATE_H
+#define _LM_STATE_H
 
 #include "lm/max_order.hh"
 #include "lm/word_index.hh"
