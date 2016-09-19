@@ -24,6 +24,8 @@ set(KENLM_FILTER_SOURCE
 #
 add_library(kenlm_filter ${KENLM_FILTER_SOURCE})
 
+install(TARGETS kenlm_filter DESTINATION lib)
+
 if (NOT MSVC)
 	set(THREADS pthread)
 endif()

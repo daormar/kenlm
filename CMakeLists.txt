@@ -37,6 +37,9 @@ if (FORCE_STATIC)
   set(CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS)
 endif ()
 
+# Always generate position independent code
+set(CMAKE_POSITION_INDEPENDENT_CODE True)
+
 # Compile all executables into bin/
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 
@@ -80,3 +83,19 @@ include_directories(
 add_subdirectory(util)
 add_subdirectory(lm)
 
+# Install header files
+INSTALL ( DIRECTORY lm/
+  DESTINATION include/lm
+  FILES_MATCHING PATTERN "*.hh"
+  )
+
+INSTALL ( DIRECTORY util/
+  DESTINATION include/util
+  FILES_MATCHING PATTERN "*.hh"
+  )
+
+# Include "make dist" functionality
+set(CPACK_SOURCE_IGNORE_FILES
+  "/build/;/.bzr/;~$;${CPACK_SOURCE_IGNORE_FILES}")
+include(CPack)
+add_custom_target(dist COMMAND ${CMAKE_MAKE_PROGRAM} package_source)

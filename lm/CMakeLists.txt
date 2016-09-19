@@ -37,6 +37,8 @@ endif()
 add_library(kenlm ${KENLM_LM_SOURCE} ${KENLM_LM_COMMON_SOURCE})
 target_link_libraries(kenlm kenlm_util ${Boost_LIBRARIES} ${THREADS})
 
+install(TARGETS kenlm DESTINATION lib)
+
 set(KENLM_MAX_ORDER 6 CACHE STRING "Maximum supported ngram order")
 target_compile_definitions(kenlm PUBLIC -DKENLM_MAX_ORDER=${KENLM_MAX_ORDER})
 
