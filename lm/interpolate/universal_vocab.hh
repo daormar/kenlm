@@ -3,6 +3,7 @@
 
 #include "lm/word_index.hh"
 
+#include <algorithm>
 #include <vector>
 #include <cstddef>
 
